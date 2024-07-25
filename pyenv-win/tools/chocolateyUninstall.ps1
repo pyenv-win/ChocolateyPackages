@@ -4,14 +4,18 @@ Uninstall-ChocolateyZipPackage `
 
 Uninstall-ChocolateyEnvironmentVariable `
     -VariableName 'PYENV' `
-    -VariableType 'User'
+    -VariableType 'Machine'
 
-$path = [System.Environment]::GetEnvironmentVariable('PATH', 'User')
+Uninstall-ChocolateyEnvironmentVariable `
+    -VariableName 'PYENV_HOME' `
+    -VariableType 'Machine'
+
+$path = [System.Environment]::GetEnvironmentVariable('PATH', 'Machine')
 
 $path = ($path.Split(';') | Where-Object { $_ -notlike '*\.pyenv\pyenv-win\*' }) -join ';'
 
 [System.Environment]::SetEnvironmentVariable(
     'PATH',
     $path,
-    'User'
+    'Machine'
 )
