@@ -10,6 +10,11 @@ Install-ChocolateyEnvironmentVariable `
     -VariableValue '%USERPROFILE%\.pyenv\pyenv-win\' `
     -VariableType 'User'
 
+Install-ChocolateyEnvironmentVariable `
+    -VariableName 'PYENV_HOME' `
+    -VariableValue '%USERPROFILE%\.pyenv\pyenv-win\' `
+    -VariableType 'User'
+
 Install-ChocolateyPath `
     -PathToInstall '%USERPROFILE%\.pyenv\pyenv-win\bin'
 
